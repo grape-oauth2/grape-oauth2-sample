@@ -15,7 +15,7 @@ end
 require 'rack/test'
 require 'database_cleaner'
 
-require_relative '../app/config/application'
+require_relative '../config/application'
 
 require 'support/api_helper'
 

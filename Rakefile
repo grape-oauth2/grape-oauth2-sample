@@ -1,6 +1,6 @@
 require 'bundler/setup'
 
-require_relative 'app/config/application'
+require_relative 'config/application'
 load 'tasks/otr-activerecord.rake'
 
 desc 'Default: run specs.'

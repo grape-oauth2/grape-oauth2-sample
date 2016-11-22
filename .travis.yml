@@ -7,7 +7,7 @@ services:
   - postgresql
 
 before_script:
-  - cp app/config/database.yml.travis app/config/database.yml
+  - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:create db:migrate
 
 before_install:

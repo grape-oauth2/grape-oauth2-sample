@@ -18,20 +18,20 @@ end
 load File.expand_path('../database.rb', __FILE__)
 
 # Models
-require_relative '../models/application_record'
+require_relative '../app/models/application_record'
 
 %w(access_token access_code application post user).each do |model|
-  require_relative "../models/#{model}"
+  require_relative "../app/models/#{model}"
 end
 
 # Entities
-Dir[File.expand_path('../../entities/*.rb', __FILE__)].each do |entity|
+Dir[File.expand_path('../../app/entities/*.rb', __FILE__)].each do |entity|
   require_relative entity
 end
 
 # Endpoints
-Dir[File.expand_path('../../endpoints/*.rb', __FILE__)].each do |endpoint|
+Dir[File.expand_path('../../app/endpoints/*.rb', __FILE__)].each do |endpoint|
   require_relative endpoint
 end
 
-require_relative '../../app/api'
+require_relative '../app/api'
