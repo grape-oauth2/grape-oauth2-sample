@@ -1,0 +1,23 @@
+language: ruby
+sudo: false
+cache: bundler
+bundler_args: --without yard guard benchmarks
+
+services:
+  - postgresql
+
+before_script:
+  - cp app/config/database.yml.travis app/config/database.yml
+  - bundle exec rake db:create db:migrate
+
+before_install:
+  - gem install bundler -v '~> 1.10'
+
+rvm:
+  - 2.2.4
+  - 2.3.1
+  - ruby-head
+
+matrix:
+  allow_failures:
+    - rvm: ruby-head

@@ -1,6 +1,15 @@
 require 'bundler/setup'
+require 'rspec/core/rake_task'
+
 require_relative 'app/config/application'
 load 'tasks/otr-activerecord.rake'
+
+desc 'Default: run specs.'
+task default: :spec
+
+RSpec::Core::RakeTask.new(:spec) do |config|
+  config.verbose = false
+end
 
 namespace :db do
   task :environment do
