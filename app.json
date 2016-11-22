@@ -1,0 +1,10 @@
+{
+  "name": "GrapeOAuth2Sample",
+  "description": "GrapeOAuth2 Sample application",
+  "repository": "https://github.com/grape-oauth2/grape-oauth2-sample",
+  "keywords": ["grape_oauth2", "grape", "rest", "api", "OAuth"],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "addons": ["heroku-postgresql"]
+}

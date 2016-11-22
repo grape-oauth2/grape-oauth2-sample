@@ -1,0 +1,14 @@
+LineLength:
+  Max: 120
+AllCops:
+  Exclude:
+    - 'spec/**/*'
+    - 'Rakefile'
+    - db/**/*
+  DisplayCopNames: true
+Rails:
+  Enabled: false
+Documentation:
+  Enabled: false
+Style/EndOfLine:
+  Enabled: false
