@@ -1,4 +1,4 @@
-GrapeOAuth2.configure do |config|
+Grape::OAuth2.configure do |config|
   config.client_class_name = 'Application'
   config.access_token_class_name = 'AccessToken'
   config.access_grant_class_name = 'AccessCode'

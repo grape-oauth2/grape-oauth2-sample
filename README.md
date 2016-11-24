@@ -3,11 +3,11 @@
 [![Code Climate](https://codeclimate.com/github/grape-oauth2/grape-oauth2-sample/badges/gpa.svg)](https://codeclimate.com/github/grape-oauth2/grape-oauth2-sample)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](#license)
 
-This is an example of using GrapeOAuth2 gem with the Grape API project.
+This is an example of using [Grape::OAuth2 gem](https://github.com/nbulaj/grape_oauth2) with the [Grape API](https://github.com/ruby-grape/grape) project.
 
 This app is ready to deploy to Heroku [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/grape-oauth2/grape-oauth2-sample).
 
-Project stack includes: **Grape, Grape::Entity, GrapeOAuth2, ActiveRecord 5, Puma, PostgreSQL, Dotenv, Rack::Cors, Rubocop, RSpec**.
+Project stack includes: **Grape, Grape::OAuth2, Grape::Entity, ActiveRecord 5, Puma, PostgreSQL, Dotenv, Rack::Cors, Rubocop, RSpec**.
 
 ## Implemented features
 

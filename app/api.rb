@@ -3,7 +3,7 @@ module GrapeOAuth2Sample
     format :json
     prefix :api
 
-    include GrapeOAuth2.api
+    include Grape::OAuth2.api
 
     desc 'Root action'
 
