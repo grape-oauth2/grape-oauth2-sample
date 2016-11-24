@@ -5,12 +5,12 @@ module GrapeOAuth2Sample
 
     include GrapeOAuth2.api
 
-    mount ::GrapeOAuth2Sample::Endpoints::Posts
-
-    desc 'Root'
+    desc 'Root action'
 
     get '/' do
       { error: ['Please check API documentation'] }
     end
+
+    mount ::GrapeOAuth2Sample::V1::Base
   end
 end

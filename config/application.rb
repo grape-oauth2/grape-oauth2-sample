@@ -4,6 +4,8 @@ Bundler.setup
 require 'dotenv'
 Dotenv.load(File.expand_path('.env.local'), File.expand_path('.env'))
 
+require 'rack/cors'
+
 require 'otr-activerecord'
 require 'grape'
 require 'grape-entity'
@@ -25,13 +27,16 @@ require_relative '../app/models/application_record'
 end
 
 # Entities
-Dir[File.expand_path('../../app/entities/*.rb', __FILE__)].each do |entity|
+Dir[File.expand_path('../../app/v1/entities/*.rb', __FILE__)].each do |entity|
   require_relative entity
 end
 
 # Endpoints
-Dir[File.expand_path('../../app/endpoints/*.rb', __FILE__)].each do |endpoint|
+Dir[File.expand_path('../../app/v1/endpoints/*.rb', __FILE__)].each do |endpoint|
   require_relative endpoint
 end
+
+# Versioned APIs
+require_relative '../app/v1/base'
 
 require_relative '../app/api'

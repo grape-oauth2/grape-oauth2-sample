@@ -12,7 +12,7 @@ describe 'Protected Resources' do
         Post.create(name: "post ##{index}", body: 'Body')
       end
 
-      get 'api/posts'
+      get 'api/v1/posts'
 
       expect(last_response.status).to eq 200
       expect(json_body.size).to eq(2)
@@ -21,7 +21,7 @@ describe 'Protected Resources' do
 
   context 'protected endpoints' do
     it 'returns Unauthorized without token' do
-      get "api/posts/#{user_post.id}"
+      get "api/v1/posts/#{user_post.id}"
 
       expect(last_response.status).to eq 401
       expect(json_body[:error]).to eq('unauthorized')
@@ -30,7 +30,7 @@ describe 'Protected Resources' do
     it 'returns Forbidden with token that does not has required scopes' do
       access_token = AccessToken.create_for(application, user)
 
-      get "api/posts/#{user_post.id}", access_token: access_token.token
+      get "api/v1/posts/#{user_post.id}", access_token: access_token.token
 
       expect(last_response.status).to eq 403
       expect(json_body[:error]).to eq('forbidden')
@@ -40,7 +40,7 @@ describe 'Protected Resources' do
       access_token = AccessToken.create_for(application, user, 'read')
       access_token.update(expires_at: (Time.now - 24000).utc)
 
-      get "api/posts/#{user_post.id}", access_token: access_token.token
+      get "api/v1/posts/#{user_post.id}", access_token: access_token.token
 
       expect(last_response.status).to eq 403
       expect(json_body[:error]).to eq('forbidden')
@@ -50,7 +50,7 @@ describe 'Protected Resources' do
       access_token = AccessToken.create_for(application, user, 'read')
       access_token.update(revoked_at: (Time.now - 24000).utc)
 
-      get "api/posts/#{user_post.id}", access_token: access_token.token
+      get "api/v1/posts/#{user_post.id}", access_token: access_token.token
 
       expect(last_response.status).to eq 403
       expect(json_body[:error]).to eq('forbidden')
@@ -59,7 +59,7 @@ describe 'Protected Resources' do
     it 'returns posts with valid token' do
       access_token = AccessToken.create_for(application, user, 'read')
 
-      get "api/posts/#{user_post.id}", access_token: access_token.token
+      get "api/v1/posts/#{user_post.id}", access_token: access_token.token
 
       expect(last_response.status).to eq 200
       expect(json_body).to include(:id, :name, :body)
@@ -68,7 +68,7 @@ describe 'Protected Resources' do
     it 'does not creates a Post with invalid token' do
       access_token = AccessToken.create_for(application, user, 'read')
 
-      post 'api/posts', name: 'Super post', body: 'Body', access_token: access_token.token
+      post 'api/v1/posts', name: 'Super post', body: 'Body', access_token: access_token.token
 
       expect(last_response.status).to eq 403
       expect(Post.count).to be_zero
@@ -78,7 +78,7 @@ describe 'Protected Resources' do
       access_token = AccessToken.create_for(application, user, 'read write')
 
       expect {
-        post 'api/posts', name: 'Super post', body: 'Body', access_token: access_token.token
+        post 'api/v1/posts', name: 'Super post', body: 'Body', access_token: access_token.token
       }.to change { Post.count }.from(0).to(1)
 
       expect(last_response.status).to eq 201

@@ -6,11 +6,12 @@ This is an example of using GrapeOAuth2 gem with the Grape API project.
 
 This app is ready to deploy to Heroku [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/grape-oauth2/grape-oauth2-sample).
 
-Project stack includes: **Grape, Grape-Entity, Grape-OAuth2, ActiveRecord 5, Puma, PostgreSQL, Dotenv, Rubocop, RSpec**.
+Project stack includes: **Grape, Grape::Entity, GrapeOAuth2, ActiveRecord 5, Puma, PostgreSQL, Dotenv, Rack::Cors, Rubocop, RSpec**.
 
 ## Implemented features
 
-* API endpoints (GET, POST);
+* API endpoints with different types of requests (GET, POST);
+* API versioning
 * Resource Owner password credentials authentication;
 * Protected endpoints access with OAuth Tokens;
 * Generate new Access Token via Refresh Token.
@@ -19,7 +20,20 @@ Project stack includes: **Grape, Grape-Entity, Grape-OAuth2, ActiveRecord 5, Pum
 
 To run the application do the following from your command-line:
 
-`> bundle exec rackup config.ru`
+`bundle exec rackup config.ru`
+
+Available API:
+
+```
+  GET  |  /api(.json)                     |      |  Root action   
+ POST  |  /api/oauth/authorize(.json)     |      |  OAuth 2.0 Authorization Endpoint                       
+ POST  |  /api/oauth/token(.json)         |      |  OAuth 2.0 Token Endpoint                               
+ POST  |  /api/oauth/revoke(.json)        |      |  OAuth 2.0 Token Revocation      
+  GET  |  /api/:version/me(.json)         |  v1  |  Information about current resource owner
+  GET  |  /api/:version/posts(.json)      |  v1  |  Get all the posts without authorization                
+  GET  |  /api/:version/posts/:id(.json)  |  v1  |  Read post by ID only if it belongs to authorized author
+ POST  |  /api/:version/posts(.json)      |  v1  |  Create post from authorized user                       
+```
 
 ## Routes
 
