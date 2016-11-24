@@ -1,5 +1,6 @@
 # Grape & Grape::OAuth2 sample application
 [![Build Status](https://travis-ci.org/grape-oauth2/grape-oauth2-sample.svg?branch=master)](https://travis-ci.org/grape-oauth2/grape-oauth2-sample)
+[![Code Climate](https://codeclimate.com/github/grape-oauth2/grape-oauth2-sample/badges/gpa.svg)](https://codeclimate.com/github/grape-oauth2/grape-oauth2-sample)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](#license)
 
 This is an example of using GrapeOAuth2 gem with the Grape API project.
