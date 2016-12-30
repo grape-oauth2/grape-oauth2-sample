@@ -9,6 +9,8 @@ This app is ready to deploy to Heroku [![Deploy](https://www.herokucdn.com/deplo
 
 Project stack includes: **Grape, Grape::OAuth2, Grape::Entity, ActiveRecord 5, Puma, PostgreSQL, Dotenv, Rack::Cors, Rubocop, RSpec**.
 
+Supported Ruby: 2.2 — 2.4
+
 ## Implemented features
 
 * API endpoints with different types of requests (GET, POST);
